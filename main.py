@@ -69,18 +69,16 @@ if __name__ == "__main__":
         else:
             print("O's turn")
             oinput = int(input("Enter position of O:"))
-            try:
-                if xinput < 1 or xinput > 9:
-                    print("invalid")
-                    continue
-                if "O" in ostatus[oinput-1] or "X" in xstatus[oinput-1]:
-                    print("enter new place!")
-                    continue
-                ostatus.pop(oinput-1)
-                ostatus.insert(oinput-1, 'O')
-            except:
-                pass
-
+            
+            if oinput < 1 or oinput > 9:
+                print("invalid")
+                continue
+            if ("O" in ostatus[oinput-1] or "X" in xstatus[oinput-1]):
+                print("enter new place!")
+                continue
+            ostatus.pop(oinput-1)
+            ostatus.insert(oinput-1, 'O')
+            
         checkWin(xstatus, ostatus)
 
         if checkWin(xstatus, ostatus) != -1:
